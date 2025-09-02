@@ -178,7 +178,7 @@ function Dashboard() {
               <Link
                 to="/"
                 onClick={() => setActiveItem("Dashboard")}
-                className={`flex items-center w-full gap-2 p-5 rounded-2x ${
+                className={`flex items-center w-full gap-2 p-5 rounded-2xl ${
                   activeItem === "Dashboard" ? "active" : ""
                 }`}
               >
@@ -311,13 +311,16 @@ function Dashboard() {
                 </p>
                 <div className="flex justify-center gap-6">
                   <button
-                    onClick={confirmLogout}
+                    onClick={() => {
+                      setShowLogoutModal(false);
+                      console.log("user logged out");
+                    }}
                     className="bg-[#2c6c50] hover:bg-[d2f34c] hover:text-[#244034] transition-colors duration-300 text-white px-8 py-2 rounded-lg text-lg"
                   >
                     Yes
                   </button>
                   <button
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowLogoutModal(false)}
                     className="text-[#2c6c50] hover:underline font-[500] text-lg"
                   >
                     Cancel
@@ -326,6 +329,105 @@ function Dashboard() {
               </div>
             </div>
           )}
+        </div>
+        {/* main */}
+        <div className="main bg-[#f0f5f3] min-h-full h-full w-full ml-[350px] overflow-x-scroll">
+          <div className="nav-main bg-[#f0f5f3] w-full h-[90px] flex items-center justify-end gap-4 z-[9]">
+            <img
+              src={menuopen}
+              alt="open-menu"
+              className="mr-auto w-[30px] h-[30px] cursor-pointer flex lg:hidden"
+              onClick={toggleSidebar}
+            />
+            <form className="search-form w-[300px] mr-6 relative border-none hidden lg:flex">
+              <i className="fa-solid fa-magnifying-glass absolute top-[15px] left-4 text-black"></i>
+              <input
+                type="text"
+                placeholder="Search here..."
+                className="w-full px-10 rounded-full font-[300] bg-[rgba(0,0,0,0.5)] text-[rgba(0,0,0,0.5)] border-none shadow-none focus:outline-none pl-[45px] pr-[15px] h-[45px] text-base"
+              />
+            </form>
+            <button
+              className="nav-notification relative cursor-pointer"
+              onClick={() => setIsNotification(!isNotification)}
+            >
+              <img
+                src={notification}
+                alt="notifocation-icon"
+                className="h-[25px] w-[25px]"
+              />
+              <div className="badge-pill"></div>
+              <div
+                className={`absolute left-[-150px] top-[40px] text-start mt-2 w-[250px] bg-white rounded-xl shadow-md p-5 space-y-4 z-10 transition-all duration-300 ease-in-out ${
+                  isNotification
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible-translate-y-2"
+                }`}
+              >
+                <h3 className="font-semibold">Notification</h3>
+                <ul className="list-none space-y-2">
+                  <li className="flex items-start relative notification-item">
+                    <img
+                      src={notification3}
+                      alt="notification-icon"
+                      className="w-10 h-10"
+                    />
+                    <div className="ps-2">
+                      <h6 className="texr-md text-black font-[500]">
+                        You have 3 new emails
+                      </h6>
+                      <span className="text-sm text-gray-500 font-[300]">
+                        2 hours ago
+                      </span>
+                    </div>
+                    <div className="badge-pill" style={{ top: "8px" }}></div>
+                  </li>
+                  <li className="flex items-start relative notification-item">
+                    <img
+                      src={notification3}
+                      alt="notification-icon"
+                      className="w-10 h-10"
+                    />
+                    <div className="ps-2">
+                      <h6 className="texr-md text-black font-[500]">
+                        You have 5 new emails
+                      </h6>
+                      <span className="text-sm text-gray-500 font-[300]">
+                        6 hours ago
+                      </span>
+                    </div>
+                    <div className="badge-pill" style={{ top: "8px" }}></div>
+                  </li>
+                  <li className="flex items-start relative notification-item">
+                    <img
+                      src={notification3}
+                      alt="notification-icon"
+                      className="w-10 h-10"
+                    />
+                    <div className="ps-2">
+                      <h6 className="texr-md text-black font-[500]">
+                        You have 7 new emails
+                      </h6>
+                      <span className="text-sm text-gray-500 font-[300]">
+                        9 hours ago
+                      </span>
+                    </div>
+                    <div className="badge-pill" style={{ top: "8px" }}></div>
+                  </li>
+                </ul>
+              </div>
+            </button>
+            <Link
+              to="Pages/SubmitJob"
+              className="bg-[#3f634d] text-white hover:bg-[#d2f34c] hover:text-[#244034] py-3 px-6 text-md font-[500] rounded-full transition duration-300"
+              type="button"
+            >
+              Post a Job
+            </Link>
+          </div>
+          <div className="content w-full flex flex-col justify-between min-h-full">
+            <Outlet />
+          </div>
         </div>
       </div>
     </>
