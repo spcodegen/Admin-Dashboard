@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
 import user from "../assets/user.jpg";
 import dashboard1 from "../assets/dashbord-icon-01.svg";
 import dashboard2 from "../assets/dashbord-icon-02.svg";
@@ -28,9 +29,9 @@ import menuopen from "../assets/menu-open.png";
 import menuclose from "../assets/menu-close.png";
 
 import { Link } from "react-router-dom";
-import { Outlet } from "react-router-dom";
 
 import logoutdelete from "../assets/logout-delete.svg";
+import MainContent from "./MainContent";
 
 function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -331,8 +332,8 @@ function Dashboard() {
           )}
         </div>
         {/* main */}
-        <div className="main bg-[#f0f5f3] min-h-full h-full w-full ml-[350px] overflow-x-scroll">
-          <div className="nav-main bg-[#f0f5f3] w-full h-[90px] flex items-center justify-end gap-4 z-[9]">
+        <div className="main bg-[#00000056] min-h-full h-full w-full ml-[350px] overflow-x-scroll">
+          <div className="nav-main bg-[#0e81535d] w-full h-[90px] flex items-center justify-end gap-4 z-[9]">
             <img
               src={menuopen}
               alt="open-menu"
@@ -344,7 +345,7 @@ function Dashboard() {
               <input
                 type="text"
                 placeholder="Search here..."
-                className="w-full px-10 rounded-full font-[300] bg-[rgba(0,0,0,0.5)] text-[rgba(0,0,0,0.5)] border-none shadow-none focus:outline-none pl-[45px] pr-[15px] h-[45px] text-base"
+                className="w-full px-10 rounded-full font-[300] bg-[rgba(236,235,235,0.68)] text-[rgba(0,0,0,0.86)] border-none shadow-none focus:outline-none pl-[45px] pr-[15px] h-[45px] text-base"
               />
             </form>
             <button
@@ -425,7 +426,7 @@ function Dashboard() {
               Post a Job
             </Link>
           </div>
-          <div className="content w-full flex flex-col justify-between min-h-full">
+          <div className="content w-full flex flex-col justify-between min-h-full bg-[#0e74815d]">
             <Outlet />
           </div>
         </div>
